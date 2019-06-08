@@ -439,6 +439,16 @@ type ZGetPaymentDisclosure struct {
 	Common
 }
 
+type Generate struct {
+	Result []string `json:"result"`
+	Common
+}
+
+type GetGenerate struct {
+	Result bool `json:"result"`
+	Common
+}
+
 type Addresses struct {
 	Address string `json:"addr"`
 	Amount  string `json:"amount"`
