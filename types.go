@@ -387,6 +387,53 @@ type SoftFork struct {
 		NextBlock string `json:"nextblock"`
 	}
 }
+
+type GetInfo struct {
+	Result struct {
+		Version            int32   `json:"version"`
+		ProtocolVersion    int32   `json:"protocolversion"`
+		KMDVersion         string  `json:"KMDversion"`
+		Notarized          int32   `json:"notarized"`
+		PerMoMHeight       int32   `json:"perMoMheight"`
+		NotarizedHash      string  `json:"notarizedhash"`
+		NotarizedTXID      string  `json:"notarizedtxid"`
+		NotarizedTXHeight  string  `json:"notarizedtxheight"`
+		KMDnotarizedHeight int32   `json:"KMDnotarizedHeight"`
+		NotarizedConfirms  int32   `json:"notarizedconfirms"`
+		WalletVersion      int32   `json:"walletversion"`
+		Balance            float32 `json:"balance"`
+		Blocks             int32   `json:"blocks"`
+		LongestChain       int32   `json:"longestchain"`
+		TimeOffset         int32   `json:"timeoffset"`
+		TipTime            int32   `json:"tiptime"`
+		Connections        int32   `json:"connections"`
+		Proxy              string  `json:"proxy"`
+		Difficulty         float32 `json:"difficulty"`
+		TestNet            bool    `json:"testnet"`
+		KeyOldestPool      int32   `json:"keyoldestpool"`
+		KeyPoolSize        int32   `json:"keypoolsize"`
+		RelayFee           float64 `json:"relayfee"`
+		PayTXFee           float32 `json:"paytxfee"`
+		Errors             string  `json:"errors"`
+		Name               string  `json:"name"`
+		P2PPort            int32   `json:"p2pport"`
+		RPCPort            int32   `json:"rpcport"`
+		Magic              int32   `json:"magic"`
+		PreMine            int32   `json:"premine"`
+	}
+	Common
+}
+
+type GetHelp struct {
+	Result string `json:"result"`
+	Common
+}
+
+type Stop struct {
+	Result string `json:"result"`
+	Common
+}
+
 type Addresses struct {
 	Address string `json:"addr"`
 	Amount  string `json:"amount"`
