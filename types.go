@@ -638,6 +638,88 @@ type SubmitBlock struct {
 	Common
 }
 
+type CreateRawTransactions struct {
+	Result string `json:"result"`
+	Common
+}
+
+type DecodeRawTransactions struct {
+	Result struct {
+		TXID       string        `json:"txid"`
+		Size       int32         `json:"size"`
+		Version    int32         `json:"version"`
+		LockTime   int32         `json:"locatime"`
+		Vins       []Vin         `json:"vin"`
+		Vouts      []Vout        `json:"vout"`
+		VJoinSplit []interface{} `json:"vjoinsplit"`
+	}
+	Common
+}
+
+type DecodeScript struct {
+	Result struct {
+		ASM  string `json:"asm"`
+		Type string `json:"type"`
+		P2Sh string `json:"p2sh"`
+	}
+	Common
+}
+
+type GetRawTransaction struct {
+	Result struct {
+		Hex              string        `json:"hex"`
+		Txid             string        `json:"txid"`
+		OverWintered     bool          `json:"overwintered"`
+		Version          int32         `json:"version"`
+		VersionGroupID   string        `json:"versiongroupid"`
+		LockTime         int64         `json:"locktime"`
+		ExpiryHeight     int64         `json:"expiryheight"`
+		Vins             []Vin         `json:"vin"`
+		Vouts            []Vout        `json:"vout"`
+		VJoinSplit       []interface{} `json:"vjoinsplit"`
+		ValueBalance     float32       `json:"valuebalance"`
+		VShieldSpend     []interface{} `json:"vshieldspend"`  // Data type unknown
+		VShieldOutput    []interface{} `json:"vshieldoutput"` // Data type unknown
+		BlockHash        string        `json:"blockhash"`
+		Height           int32         `json:"height"`
+		Confirmations    int32         `json:"confirmations"`
+		RawConfirmations int32         `json:"rawconfirmations"`
+		Time             int64         `json:"time"`
+		BlockTime        int64         `json:"blocktime"`
+	}
+	Common
+}
+
+type SendRawTransaction struct {
+	Result string `json:"result"`
+	Common
+}
+
+type SignRawTransaction struct {
+	Result struct {
+		Hex       string `json:"hex"`
+		Completed bool   `json:"completed"`
+	}
+	Common
+}
+
+type Vin struct {
+	TxID      string `json:"txid"`
+	Vout      int32  `json:"vout"`
+	ScriptSig struct {
+		ASM string `json:"asm"`
+		Hex string `json:"hex"`
+	}
+	Sequence int64 `json:"sequence"`
+}
+
+type Vout struct {
+	Value    float32 `json:"value"`
+	ValueSat int64   `json:"valuesat"`
+	N        int32   `json:"n"`
+	ScriptPubKey
+}
+
 type Addresses struct {
 	Address string `json:"addr"`
 	Amount  string `json:"amount"`
