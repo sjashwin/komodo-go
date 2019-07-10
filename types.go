@@ -519,6 +519,105 @@ type GetMiningInfo struct {
 	Common
 }
 
+type GetAddedNodeInfo struct {
+	Result struct {
+		AddedNode string    `json:"addednode"`
+		Connected bool      `json:"connected"`
+		Addresses []Address `json:"addresses"`
+	}
+	Common
+}
+
+type GetConnectionCount struct {
+	Result int32 `json:"getconnectioncount"`
+	Common
+}
+
+type GetDeprecationInfo struct {
+	Result struct {
+		Version           int32  `json:"version"`
+		SubVersion        string `json:"subversion"`
+		DeprecationHeight int32  `json:"deprecationheight"`
+	}
+	Common
+}
+
+type GetNetTotals struct {
+	Result struct {
+		TotalBytesRecv int32 `json:"totalbytesrecv"`
+		TotalBytesSent int32 `json:"totalbytessent"`
+		TimeMillis     int64 `json:"timemillis"`
+	}
+	Common
+}
+
+type GetNetworkInfo struct {
+	Result struct {
+		Version         int32     `json:"version"`
+		SubVersion      string    `json:"subversion"`
+		ProtocolVersion int32     `json:"protocolversion"`
+		LocalServices   string    `json:"localservices"`
+		TimeOffset      int32     `json:"timeoffset"`
+		Connections     int32     `json:"connections"`
+		Network         []Network `json:"network"`
+		Relay           float64   `json:"relay"`
+		// Need to find data structure.
+		LocalAddresses []interface{} `json:"localaddress"`
+		Warnings       string        `json:"warnings"`
+	}
+	Common
+}
+
+type Network struct {
+	Name                       string `json:"name"`
+	Limited                    bool   `json:"limited"`
+	Reachable                  bool   `json:"reachable"`
+	Proxy                      string `json:"proxy"`
+	ProxyRandomizedCredentials string `json:"proxyrandomizedcredentials"`
+}
+
+type GetPeerInfo struct {
+	Result struct {
+		ID             int32   `json:"id"`
+		Addr           string  `json:"addr"`
+		AddrLocal      string  `json:"addrlocal"`
+		Services       string  `json:"services"`
+		LastSend       int32   `json:"lastsend"`
+		LastRecv       int64   `json:"lastrecv"`
+		BytesSent      int64   `json:"bytessent"`
+		BytesRecv      int64   `json:"bytesrecv"`
+		ConnTime       int64   `json:"conntime"`
+		TimeOffset     int32   `json:"timeoffset"`
+		PingTime       float64 `json:"pingtime"`
+		Version        int32   `json:"version"`
+		SubVer         string  `json:"subver"`
+		InBound        bool    `json:"inbound"`
+		StartingHeight int32   `json:"startingheight"`
+		BanScore       int32   `json:"banscore"`
+		SyncedHeaders  int32   `json:"synced_headers"`
+		SyncedBlocks   int32   `json:"synced_blocks"`
+		// Data type unknown
+		InFlight    []interface{} `json:"inflight"`
+		WhiteListed bool          `json:"whitelisted"`
+	}
+	Common
+}
+
+type ListBanned struct {
+	Result []Banned `json:"result"`
+	Common
+}
+
+type Banned struct {
+	Address     string `json:"addresss"`
+	BannedUntil int64  `json:"banned_until"`
+}
+
+type Address struct {
+	Address   string `json:"address"`
+	Connected string `json:"connected"`
+}
+
 type GetNetworkHashPS struct {
 	Result int32 `json:"result"`
 	Common
