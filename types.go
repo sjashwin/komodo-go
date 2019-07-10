@@ -434,6 +434,11 @@ type Stop struct {
 	Common
 }
 
+type ZGetPaymentDisclosure struct {
+	Result string `json:"result"`
+	Common
+}
+
 type Addresses struct {
 	Address string `json:"addr"`
 	Amount  string `json:"amount"`
