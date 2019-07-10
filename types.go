@@ -665,6 +665,53 @@ type DecodeScript struct {
 	Common
 }
 
+type CreateMultiSig struct {
+	Address      string `json:"address"`
+	RedeemScript string `json:"redeemscript"`
+	Common
+}
+
+type DecodeCCOpret struct {
+	Result string  `json:"result"`
+	OpRets []OpRet `json:"OpRets"`
+	Common
+}
+
+type InvalidateBlock struct {
+	Result string `json:"result"`
+	Common
+}
+
+type ValidateAddress struct {
+	IsValid      bool   `json:"isvalid"`
+	Address      string `json:"address"`
+	ScriptPubKey string `json:"scriptpubkey"`
+	SegID        int    `json:"segid"`
+	IsMine       bool   `json:"ismine"`
+	IsWatchOnly  bool   `json:"iswatchonly"`
+	IsScript     bool   `json:"isscript"`
+	PubKey       string `json:"pubkey"`
+	IsCompressed bool   `json:"iscompressed"`
+	Account      string `json:"account"`
+}
+
+type VerifyMessage struct {
+	bool
+}
+
+type ZValidateAddress struct {
+	IsValid         bool   `json:"isvalid"`
+	Address         string `json:"address"`
+	PayingKey       string `json:"payingkey"`
+	TransmissionKey string `json:"transmissionkey"`
+	IsMine          bool   `json:"ismine"`
+}
+
+type OpRet struct {
+	EvalCode string `json:"eval_code"`
+	Function string `json:"function"`
+}
+
 type GetRawTransaction struct {
 	Result struct {
 		Hex              string        `json:"hex"`
