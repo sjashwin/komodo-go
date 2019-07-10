@@ -392,7 +392,7 @@ type GetInfo struct {
 	Result struct {
 		Version            int32   `json:"version"`
 		ProtocolVersion    int32   `json:"protocolversion"`
-		KMDVersion         string  `json:"KMDversion"`
+		KMDVersion         int32   `json:"KMDversion"`
 		Notarized          int32   `json:"notarized"`
 		PerMoMHeight       int32   `json:"perMoMheight"`
 		NotarizedHash      string  `json:"notarizedhash"`
@@ -435,6 +435,106 @@ type Stop struct {
 }
 
 type ZGetPaymentDisclosure struct {
+	Result string `json:"result"`
+	Common
+}
+
+type Generate struct {
+	Result []string `json:"result"`
+	Common
+}
+
+type GetGenerate struct {
+	Result bool `json:"result"`
+	Common
+}
+
+type GetBlockSubsidy struct {
+	Result struct {
+		Miner float32 `json:"miner"`
+	}
+	Common
+}
+
+type GetBlockTemplate struct {
+	Result struct {
+		Version              int32         `json:"version"`
+		PreviousBlockHash    string        `json:"previousblockhash"`
+		FinalSaplingRootHash string        `json:"finalsaplingroothash"`
+		Transactions         []Transaction `json:"transactions"`
+		CoinbaseTXn          CoinbaseTXn   `json:"coinbasetxn"`
+		LongPollID           string        `json:"longpollid"`
+		Target               string        `json:"target"`
+		MinTime              int32         `json:"mintime"`
+		Mutable              []string      `json:"mutable"`
+		NonceRange           string        `json:"noncerange"`
+		SigOpLimit           int32         `json:"sigoplimit"`
+		SizeLimit            int32         `json:"sizelimit"`
+		CurTime              int32         `json:"curtime"`
+		Bits                 string        `json:"bits"`
+		Height               int32         `json:"height"`
+	}
+	Common
+}
+
+type Transaction struct {
+	Data    string  `json:"data"`
+	Hash    string  `json:"hash"`
+	Depends []int32 `json:"depends"`
+	Fee     int32   `json:"fee"`
+	SigOPs  int32   `json:"sigops"`
+}
+
+type CoinbaseTXn struct {
+	Data          string  `json:"data"`
+	Hash          string  `json:"hash"`
+	Depends       []int32 `json:"depends"`
+	Fee           int32   `json:"fee"`
+	SigOPs        int32   `json:"sigops"`
+	CoinbaseValue int64   `json:"coinbasevalue"`
+	Required      bool    `json:"required"`
+}
+
+type GetLocalSolPS struct {
+	Result float64 `json:"result"`
+	Common
+}
+
+type GetMiningInfo struct {
+	Result struct {
+		Blocks           int32   `json:"blocks"`
+		CurrentBlockSize int32   `json:"currentblocksize"`
+		Difficulty       float32 `json:"difficulty"`
+		Errors           string  `json:"errors"`
+		GenProcLimit     int32   `json:"genproclimit"`
+		LocalSolPS       int32   `json:"localsolps"`
+		NetworkSolPS     int32   `json:"networksolps"`
+		NetworkHashPS    int32   `json:"networkhashps"`
+		PooledTX         int32   `json:"pooledtx"`
+		TestNet          bool    `json:"testnet"`
+		Chain            string  `json:"chain"`
+		Generate         bool    `json:"generate"`
+		NumThreads       int32   `json:"numthreads"`
+	}
+	Common
+}
+
+type GetNetworkHashPS struct {
+	Result int32 `json:"result"`
+	Common
+}
+
+type GetNetworkSolPS struct {
+	Result int32 `json:"result"`
+	Common
+}
+
+type PrioritizeTransaction struct {
+	Result bool `json:"result"`
+	Common
+}
+
+type SubmitBlock struct {
 	Result string `json:"result"`
 	Common
 }
