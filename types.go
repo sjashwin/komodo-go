@@ -477,7 +477,7 @@ type GetBlockTemplate struct {
 	Common
 }
 
-s {
+type Transaction struct {
 	Data    string  `json:"data"`
 	Hash    string  `json:"hash"`
 	Depends []int32 `json:"depends"`
@@ -853,13 +853,13 @@ type ReceivedAddress struct {
 
 type ListSinceBlock struct {
 	Result    []Transactions `json:"result"`
-	LastBlock string        `json:"lastblock"`
+	LastBlock string         `json:"lastblock"`
 	Common
 }
 
 type ListTransactions struct {
 	Result    []Transactions `json:"result"`
-	LastBlock string        `json:"lastblock"`
+	LastBlock string         `json:"lastblock"`
 	Common
 }
 
@@ -869,16 +869,16 @@ type ListUnspent struct {
 }
 
 type Unspent struct {
-	TXID string `json:"txid"`
-	Vout int `json:"vout"`
-	Generated bool `json:"generated"`
-	Address string `json:"address"`
-	ScriptPubKey string `json:"scriptpubkey"`
-	Amount float64 `json:"amount"`
-	Interest float64 `json:"interest"`
-	RawConfirmations int `json:"rawconfirmations"`
-	Confirmations int `json:"confirmations"`
-	Spendable bool `json:"spendable"`
+	TXID             string  `json:"txid"`
+	Vout             int     `json:"vout"`
+	Generated        bool    `json:"generated"`
+	Address          string  `json:"address"`
+	ScriptPubKey     string  `json:"scriptpubkey"`
+	Amount           float64 `json:"amount"`
+	Interest         float64 `json:"interest"`
+	RawConfirmations int     `json:"rawconfirmations"`
+	Confirmations    int     `json:"confirmations"`
+	Spendable        bool    `json:"spendable"`
 }
 
 type LockUnspent struct {
@@ -904,8 +904,8 @@ type SendToAddress struct {
 type SetPubKey struct {
 	Result struct {
 		Address string `json:"address"`
-		IsMine bool `json:"ismine"`
-		PubKey string `json:"pubkey"`
+		IsMine  bool   `json:"ismine"`
+		PubKey  string `json:"pubkey"`
 	}
 	Common
 }
@@ -958,9 +958,9 @@ type ZGetOperationStatus struct {
 type ZGetTotalBalance struct {
 	Result struct {
 		Transparent string `json:"transparent"`
-		Interest string `json:"interest"`
-		Private string `json:"private"`
-		Total string `json:"total"`
+		Interest    string `json:"interest"`
+		Private     string `json:"private"`
+		Total       string `json:"total"`
 	}
 	Common
 }
@@ -981,23 +981,23 @@ type ZListOperationIDs struct {
 }
 
 type OperationResult struct {
-	ID string `json:"id"`
-	Status string `json:"status"`
-	CreationTime int64 `json:"creation_time"`
-	Result []string `json:"result"`
-	ExectionSecs float64 `json:"execution_secs"`
-	Method string `json:"method"`
-	Params struct {
-		FromAddress string `json:"fromaddress"`
-		Amounts []Amount `json:"amounts"`
-		MineConf int `json:"mineconf"`
-		Fee float64 `json:"fee"`
+	ID           string   `json:"id"`
+	Status       string   `json:"status"`
+	CreationTime int64    `json:"creation_time"`
+	Result       []string `json:"result"`
+	ExectionSecs float64  `json:"execution_secs"`
+	Method       string   `json:"method"`
+	Params       struct {
+		FromAddress string   `json:"fromaddress"`
+		Amounts     []Amount `json:"amounts"`
+		MineConf    int      `json:"mineconf"`
+		Fee         float64  `json:"fee"`
 	}
 }
 
 type Amount struct {
-	Address string `json:"address"`
-	Amount float64 `json:"amount"`
+	Address string  `json:"address"`
+	Amount  float64 `json:"amount"`
 }
 
 type Transactions struct {
