@@ -477,7 +477,7 @@ type GetBlockTemplate struct {
 	Common
 }
 
-type Transaction struct {
+s {
 	Data    string  `json:"data"`
 	Hash    string  `json:"hash"`
 	Depends []int32 `json:"depends"`
@@ -735,6 +735,298 @@ type GetRawTransaction struct {
 		BlockTime        int64         `json:"blocktime"`
 	}
 	Common
+}
+
+type AddMultiSigAddress struct {
+	Result string `json:"result"`
+	Common
+}
+
+type BackupWallet struct {
+	Result string `json:"result"`
+	Common
+}
+
+type DumpPrivKey struct {
+	Result string `json:"result"`
+	Common
+}
+
+type DumpWallet struct {
+	Result string `json:"result"`
+	Common
+}
+
+type EncryptWallet struct {
+	Result string `json:"result"`
+	Common
+}
+
+type GetBalance struct {
+	Result float64 `json:"result"`
+	Common
+}
+
+type GetNewAddress struct {
+	Result string `json:"result"`
+	Common
+}
+
+type GetRawAddressChange struct {
+	Result string `json:"result"`
+	Common
+}
+
+type GetReceivedByAddress struct {
+	Result float64 `json:"result"`
+	Common
+}
+
+type GetTransaction struct {
+	Result struct {
+		Amount           float64   `json:"amount"`
+		RawConfirmations int       `json:"rawconfirmations"`
+		Confirmations    int       `json:"confirmations"`
+		BlockHash        string    `json:"blockhash"`
+		BlockIndex       int       `json:"blockindex"`
+		BlockTime        int64     `json:"blocktime"`
+		ExpiryHeight     int64     `json:"expiryheight"`
+		TXID             string    `json:"txid"`
+		WalletConflicts  []string  `json:"walletconflicts"`
+		Time             int64     `json:"time"`
+		TimeReceived     int64     `json:"timereceived"`
+		VJoinSplit       []string  `json:"vjoinsplit"`
+		Details          []Details `json:"details"`
+		Hex              string    `json:"hex"`
+	}
+	Common
+}
+
+type GetUnconfirmedBalance struct {
+	Result float64 `json:"result"`
+	Common
+}
+
+type ImportAddress struct {
+	Result string `json:"result"`
+	Common
+}
+
+type ImportPrivKey struct {
+	Result string `json:"result"`
+	Common
+}
+
+type ImportWallet struct {
+	Result string `json:"result"`
+	Common
+}
+
+type KeyPoolRefill struct {
+	Result string `json:"result"`
+	Common
+}
+
+type ListUnlockSpent struct {
+	Result []ListUnlock `json:"Result"`
+	Common
+}
+
+type ListUnlock struct {
+	TXID string `json:"txid"`
+	VOut int    `json:"vout"`
+	Common
+}
+
+type ListReceivedByAddres struct {
+	Result []ReceivedAddress `json:"result"`
+	Common
+}
+
+type ReceivedAddress struct {
+	Address          string   `json:"address"`
+	Account          string   `json:"account"`
+	Amount           float64  `json:"amount"`
+	RawConfirmations int      `json:"rawconfirmations"`
+	TXIDs            []string `json:"txids"`
+}
+
+type ListSinceBlock struct {
+	Result    []Transactions `json:"result"`
+	LastBlock string        `json:"lastblock"`
+	Common
+}
+
+type ListTransactions struct {
+	Result    []Transactions `json:"result"`
+	LastBlock string        `json:"lastblock"`
+	Common
+}
+
+type ListUnspent struct {
+	Result []Unspent `json:"result"`
+	Common
+}
+
+type Unspent struct {
+	TXID string `json:"txid"`
+	Vout int `json:"vout"`
+	Generated bool `json:"generated"`
+	Address string `json:"address"`
+	ScriptPubKey string `json:"scriptpubkey"`
+	Amount float64 `json:"amount"`
+	Interest float64 `json:"interest"`
+	RawConfirmations int `json:"rawconfirmations"`
+	Confirmations int `json:"confirmations"`
+	Spendable bool `json:"spendable"`
+}
+
+type LockUnspent struct {
+	Result bool `json:"result"`
+	Common
+}
+
+type ResendWalletTransactions struct {
+	Result []string `json:"result"`
+	Common
+}
+
+type SendMany struct {
+	Result string `json:"result"`
+	Common
+}
+
+type SendToAddress struct {
+	Result string `json:"result"`
+	Common
+}
+
+type SetPubKey struct {
+	Result struct {
+		Address string `json:"address"`
+		IsMine bool `json:"ismine"`
+		PubKey string `json:"pubkey"`
+	}
+	Common
+}
+
+type SetTXFee struct {
+	Result bool `json:"result"`
+	Common
+}
+
+type SignMessage struct {
+	Result string `json:"result"`
+	Common
+}
+
+type ZExportKey struct {
+	Result string `json:"result"`
+	Common
+}
+
+type ZExportViewingKey struct {
+	Result string `json:"result"`
+	Common
+}
+
+type ZExportWallet struct {
+	Result string `json:"result"`
+	Common
+}
+
+type ZGetBalance struct {
+	Result float64 `json:"result"`
+	Common
+}
+
+type ZGetNewAddress struct {
+	Result string `json:"result"`
+	Common
+}
+
+type ZGetOperationResult struct {
+	Result []OperationResult `json:"result"`
+	Common
+}
+
+type ZGetOperationStatus struct {
+	Result []OperationResult `json:"result"`
+	Common
+}
+
+type ZGetTotalBalance struct {
+	Result struct {
+		Transparent string `json:"transparent"`
+		Interest string `json:"interest"`
+		Private string `json:"private"`
+		Total string `json:"total"`
+	}
+	Common
+}
+
+type ZImportKey struct {
+	Result string `json:"result"`
+	Common
+}
+
+type ZListAddress struct {
+	Result []string `json:"result"`
+	Common
+}
+
+type ZListOperationIDs struct {
+	Result []string `json:"result"`
+	Common
+}
+
+type OperationResult struct {
+	ID string `json:"id"`
+	Status string `json:"status"`
+	CreationTime int64 `json:"creation_time"`
+	Result []string `json:"result"`
+	ExectionSecs float64 `json:"execution_secs"`
+	Method string `json:"method"`
+	Params struct {
+		FromAddress string `json:"fromaddress"`
+		Amounts []Amount `json:"amounts"`
+		MineConf int `json:"mineconf"`
+		Fee float64 `json:"fee"`
+	}
+}
+
+type Amount struct {
+	Address string `json:"address"`
+	Amount float64 `json:"amount"`
+}
+
+type Transactions struct {
+	Account          string   `json:"account"`
+	Address          string   `json:"address"`
+	Category         string   `json:"category"`
+	Amount           float64  `json:"amount"`
+	Vout             int      `json:"vout"`
+	RawConfirmations int      `json:"rawconfirmations"`
+	Confirmations    int      `json:"confirmations"`
+	BlockHash        string   `json:"blockhash"`
+	BlockIndex       int      `json:"blockindex"`
+	BlockTime        int64    `json:"blocktime"`
+	ExpiryHeight     int64    `json:"expiryheight"`
+	TXID             string   `json:"txid"`
+	WalletConflicts  []string `json:"walletconflicts"`
+	Time             int64    `json:"time"`
+	TimeReceived     int64    `json:"timereceived"`
+	VJoinSplit       []string `json:"vjoinsplit"`
+	Size             int      `json:"size"`
+}
+
+type Details struct {
+	Account  string  `json:"account"`
+	Address  string  `json:"address"`
+	Category string  `json:"category"`
+	Amount   float64 `json:"amount"`
+	VOut     int     `json:"vout"`
+	Size     int     `json:"size"`
 }
 
 type SendRawTransaction struct {
