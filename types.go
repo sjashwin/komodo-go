@@ -1042,6 +1042,146 @@ type SignRawTransaction struct {
 	Common
 }
 
+type MigrateCreateBurnTransaction struct {
+	Result struct {
+		PayOuts   string `json:"payouts"`
+		BurnTxHex string `json:"BurnTxHex"`
+	}
+	Common
+}
+
+type MigrateConvertToExport struct {
+	Result struct {
+		PayOuts  string `json:"payouts"`
+		ExportTx string `json:"exportTx"`
+	}
+	Common
+}
+
+type MigrateCreateImportTransaction struct {
+	Result struct {
+		ImportTxHex string `json:"ImportTxHex"`
+	}
+	Common
+}
+
+type MigrateCompleteImportTransaction struct {
+	Result struct {
+		ImportTxHex string `json:"ImportTxHex"`
+	}
+	Common
+}
+
+type MigrateCheckBurnTransactionSource struct {
+	Result struct {
+		SourceSymbol string `json:"SourceSymbol"`
+		TargetSymbol string `json:"TargetSymbol"`
+		TargetCCID   string `json:"TargetCCid"`
+		TxOutProof   string `json:"TxOutProof"`
+		Result       string `json:"result"`
+	}
+	Common
+}
+
+type MigrateCreateNotaryApprovalTransaction struct {
+	Result struct {
+		NotaryTxHex string `json:"NotaryTxHex"`
+	}
+	Common
+}
+
+type SelfImport struct {
+	Result struct {
+		SourceTxHex string `json:"SourceTxHex"`
+		ImportTxHex string `json:"ImportTxHex"`
+	}
+	Common
+}
+
+type CalcMOM struct {
+	Result struct {
+		Coin     string `json:"coin"`
+		Height   int    `json:"height"`
+		MOMDepth int    `json:"MoMdepth"`
+		MOM      string `json:"MoM"`
+	}
+	Common
+}
+
+type MOMOMData struct {
+	Result struct {
+		Coin             string   `json:"coin"`
+		KMDHeight        int64    `json:"kmdheight"`
+		CCID             int      `json:"ccid"`
+		MOMs             []string `json:"MoMs"`
+		NotarizationHash string   `json:"notaization_hash"`
+		MOMOM            string   `json:"MoMoM"`
+		Data             string   `json:"data"`
+	}
+	Common
+}
+
+type AssetChainProof struct {
+	Result string `json:"result"`
+	Common
+}
+
+type GetNotarizationForBlock struct {
+	Result struct {
+		KMDs []KMD `json:"KMD"`
+		LABS []KMD `json:"KMD"`
+	}
+	Common
+}
+
+type ScanNotarisationDB struct {
+	Result struct {
+		Height   int64  `json:"height"`
+		Hash     string `json:"hash"`
+		OPReturn string `json:"opreturn"`
+	}
+	Common
+}
+
+type GetImports struct {
+	Result struct {
+		Import        []Imports `json:"imports"`
+		TotalImported float32   `json:"TotalImported"`
+		Time          int64     `json:"time"`
+	}
+	Common
+}
+
+type GetWalletBurnTransactions struct {
+	Result []BurnTransactions `json:"result"`
+	Common
+}
+
+type Imports struct {
+	TXID   string  `json:"txid"`
+	Amount float64 `json:"amount"`
+	Export struct {
+		TXID   string  `json:"txid"`
+		Amount float64 `json:"amount"`
+		Source string  `json:"source"`
+	}
+}
+
+type KMD struct {
+	TXID      string `json:"txid"`
+	Chain     string `json:"chain"`
+	Height    int64  `json:"height"`
+	BlockHash string `json:"blockhash"`
+	Notaries  []int  `json:"notaries"`
+}
+
+type BurnTransactions struct {
+	TXID         string  `json:"txid"`
+	BurnedAmount float64 `json:"burnedAmount"`
+	TargetSymbol string  `json:"targetSymbol"`
+	TargetCCid   string  `json:"targetCCid"`
+}
+
 type Vin struct {
 	TxID      string `json:"txid"`
 	Vout      int32  `json:"vout"`
